@@ -1,0 +1,41 @@
+from reportlab.lib.pagesizes import letter
+from reportlab.pdfgen import canvas
+from reportlab.lib import colors
+def draw_lines(my_canvas):
+  p=30
+  q=25
+  r=30
+  s=755
+  t=580
+  my_canvas.setStrokeColor(colors.grey)
+  my_canvas.setLineWidth(10)
+  my_canvas.line(p,q,r,s)#left line
+  my_canvas.line(r,s,t,s)#base line
+  my_canvas.line(t,s,t,q)#right line
+  my_canvas.line(p,q,t,q)#upper line
+  if(p==30):
+      p+=30
+      q+=30
+      r+=40
+      s-=40
+      my_canvas.line(p,q,r,s)#left line
+  if(s==715):
+    s-=5
+    r+=4
+    t-=40
+    my_canvas.line(r,s,t,s)
+  if(t==540):
+    my_canvas.line(t,s,t,q)#right line
+  if(r==74):
+    my_canvas.line(p,q,t,q)#upper line
+
+
+   
+      
+if __name__ == '__main__':
+  my_canvas = canvas.Canvas("double_border.pdf", pagesize=letter,bottomup=0)
+  draw_lines(my_canvas)
+  my_canvas.save()
+
+
+Naa@v_$$ee36n
